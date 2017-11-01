@@ -1,5 +1,19 @@
 
 
-.blog-masthead{
-    background:red;
+
+li>.active{
+    color:#fff;
+    &::after{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        margin-left: -5px;
+        vertical-align: middle;
+        content: " ";
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid;
+        border-left: 5px solid transparent;
+    }
 }
