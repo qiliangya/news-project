@@ -25,3 +25,10 @@
         .then(data=>{
             console.log(data);
         })
+    d) 一个细节错误，导致浪费了两个小时，在请求数据的时候，要return一个函数
+        return 
+        dispatch=>{...}
+        由于想把代码书写得漂亮点，但这样结果完全不同，因为在javascript中一行语句会自动给你加上分号结果变成了
+        return ;
+        dispatch=>{...}
+        这样就永远不会执行dispatch了
