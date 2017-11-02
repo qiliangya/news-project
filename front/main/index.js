@@ -1,25 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import store from './store';
-//import { Provider } from 'react-redux';
+import store from './store';
+import { Provider } from 'react-redux';
 
 import App from './modules/App' 
 import Login from './modules/Login'
 
-import Home from './modules/Home'
+import HomeConText from './modules/Home'
 
 
 import {Router,Route,hashHistory,IndexRoute} from 'react-router';
 
 
 ReactDOM.render(
-    //<Provider store={store}>
+    <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-                <IndexRoute component={Home} />
+                    <IndexRoute component={HomeConText} />
             </Route>
             <Route path="/login" component={Login}></Route>
-        </Router>,
-    //</Provider>,
+        </Router>
+    </Provider>,
     document.getElementById('app')
 )

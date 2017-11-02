@@ -1,42 +1,32 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {fetchNewsCateList} from '../action/news';
 
 import './index.scss';
 
 class Home extends React.Component{
-
     componentWillMount(){
-        fetch('http://localhost:3000/cate/list',{method:'POST',cache:'reload'})
-        .then(msg=>{
-            return msg.json();
-        })
-        .then(data=>{
-            console.log(data);
-        })
+        this.props.fetchNewsCateList();
     }
-    render(){   
-        const arr = [
-
-        ]
-
+    render(){  
+        const {newsCateList} = this.props;
+        if(newsCateList.length === 0){
+            
+        }
         return (
             <div className="container pad-top">
                 <div className="row text-center">
-                    {
-                        arr.map((item,index)=>{
-                            return (
-                                <div className="col-lg-4" key={index}>
-                                    <img className="img-circle" src={item.img} width="140" height="140"/>
-                                    <h2>{item.title}</h2>
-                                    <p>{item.detail}</p>
-                                    <p><a className="btn btn-primary" href="#" role="button">查看详情 »</a></p>
-                                </div>
-                            )
-                        })
-                    }
                 </div>
             </div>
         )
     }
 }
 
-module.exports = Home;
+const getValue = state=>{
+    return {
+        newsCateList:state.cate.newsCateList
+    }
+}
+
+const HomeConText = connect(getValue,{fetchNewsCateList})(Home);
+module.exports = HomeConText;
