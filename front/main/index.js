@@ -8,6 +8,7 @@ import Login from './modules/Login'
 
 import HomeConText from './modules/Home.js'
 import DetailConText from './modules/Detail.js'
+import NewsConText from './modules/News.js'
 
 import {Router,Route,hashHistory,IndexRoute} from 'react-router';
 
@@ -18,6 +19,7 @@ ReactDOM.render(
             <Route path="/" component={App}>
                     <IndexRoute component={HomeConText} />
                     <Route path="/detail/:id" component={DetailConText}/>
+                    <Route path="/news/:id" component={NewsConText}/>
             </Route>
             <Route path="/login" component={Login}></Route>
         </Router>

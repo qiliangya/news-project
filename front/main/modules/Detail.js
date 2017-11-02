@@ -26,7 +26,7 @@ class Detail extends React.Component{
         if(this.newsData){
             const {title,content,subtitle,author,newsdate} = this.newsData;
             return (
-                <div className="container">
+                <div>
                     <h3>{title}</h3>
                     <p>{subtitle}</p>
                     <p>{author}</p>

@@ -41,10 +41,10 @@ exports.find = (req,res,next)=>{
 
 exports.list = (req,res,next)=>{
     var page = (req.body.page)?req.body.page:1;
-
     //需要转成整型
     var rows = parseInt((req.body.rows)?req.body.rows:6);
     var id = req.body.id || null;
+    console.log(req.body);
     var ids = [];
     var queryCondition = {};
     var title = null;
