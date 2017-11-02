@@ -32,3 +32,7 @@
         return ;
         dispatch=>{...}
         这样就永远不会执行dispatch了
+
+    e) 在执行路由跳转时，由于要传递ID值，于是点击按钮时，执行一个方法
+        如果是直接 {this.function} 此时的this指向已发生改变，指向当前所在的元素this
+        需要用 ev=>{this.function(ev)} 用ES6箭头函数，this就不会改变了
