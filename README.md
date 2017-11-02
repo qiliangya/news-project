@@ -15,4 +15,13 @@
         css-loader  style-loader  sass-loader  node-sass
 
         注：在开发时 暂时不要用ExtractTextPlugin进行打包,否则sass解析报错
-        
+    
+    c) 在请求后台数据时，使用fetch方法，默认是GET请求模式，如果要更换要使用第二个参数
+
+        fetch('http://localhost:3000/cate/list',{method:'POST',cache:'reload'})
+        .then(msg=>{
+            return msg.json();
+        })
+        .then(data=>{
+            console.log(data);
+        })
