@@ -7,7 +7,7 @@ import App from './modules/App'
 import Login from './modules/Login'
 
 import HomeConText from './modules/Home.js'
-import Detail from './modules/Detail.js'
+import DetailConText from './modules/Detail.js'
 
 import {Router,Route,hashHistory,IndexRoute} from 'react-router';
 
@@ -17,7 +17,7 @@ ReactDOM.render(
         <Router history={hashHistory}>
             <Route path="/" component={App}>
                     <IndexRoute component={HomeConText} />
-                    <Route path="/detail/:id" component={Detail}/>
+                    <Route path="/detail/:id" component={DetailConText}/>
             </Route>
             <Route path="/login" component={Login}></Route>
         </Router>

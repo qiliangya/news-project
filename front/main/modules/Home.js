@@ -33,7 +33,7 @@ class Home extends React.Component{
                                 {
                                 newsList.rows?newsList.rows.map((item,index)=>{
                                 return (
-                                    <div className="col-xs-6 col-lg-4" key={item._id}>
+                                    <div className="col-xs-6 col-lg-4" key={index}>
                                         <h4 className="text-center text-hidden">{item.title}</h4>                            
                                         <p><a className="btn btn-primary" href="javascript:void(0);" onClick={ev=>{this.lookDetail(ev)}} role="button" data-inx={item._id}>点击查看详情 &raquo;</a></p>
                                     </div>
