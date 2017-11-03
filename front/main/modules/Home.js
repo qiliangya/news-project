@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {hashHistory} from 'react-router';
-import {fetchNewsCateList,fetchNewsList} from '../action/news';
+import {fetchNewsCateList,fetchNewsList,fetchGetAllNewsList} from '../action/news';
 import Sider from './public/Sider/index'
 
 import './index.scss';
@@ -10,6 +10,7 @@ class Home extends React.Component{
     componentWillMount(){
         this.props.fetchNewsCateList();
         this.props.fetchNewsList();
+        this.props.fetchGetAllNewsList();
     }
     lookDetail(ev){
         var _id = ev.target.getAttribute('data-inx');
@@ -52,5 +53,5 @@ const getValue = state=>{
     }
 }
 
-const HomeConText = connect(getValue,{fetchNewsCateList,fetchNewsList})(Home);
+const HomeConText = connect(getValue,{fetchNewsCateList,fetchNewsList,fetchGetAllNewsList})(Home);
 module.exports = HomeConText;

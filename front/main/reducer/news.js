@@ -1,6 +1,7 @@
 var initialState = {
     newsList:[],
-    news:[]
+    news:[],
+    allNewsList:[]
 }
 
 function news(state=initialState,action){
@@ -10,6 +11,8 @@ function news(state=initialState,action){
         return Object.assign({},state,{ newsList:action.data});
         case 'GETNEWS':
         return Object.assign({},state,{news:action.data});
+        case 'GETALLNEWSLIST':
+        return Object.assign({},state,{allNewsList:action.data});
         default: return state
     }
 }

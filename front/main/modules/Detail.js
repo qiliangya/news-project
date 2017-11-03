@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchNewsList} from '../action/news';
+import {fetchGetAllNewsList} from '../action/news';
 import {hashHistory} from 'react-router';
 
 import _ from 'lodash';
@@ -11,27 +11,35 @@ class Detail extends React.Component{
         this.newsData = '';
     }
     componentWillMount(){
-        const {newsList,params} = this.props;
+        const {allNewsList,params} = this.props;
         const parId = params.id;
-        const data = newsList.rows;
-        if(newsList.length === 0){
+        const data = allNewsList;
+        if(allNewsList.length === 0){
             hashHistory.push('/')
         }else{
             this.newsData = data.find(x=>{
                 return x._id === parId;
             })
         }
+        
     }
     render(){
         if(this.newsData){
             const {title,content,subtitle,author,newsdate} = this.newsData;
             return (
                 <div>
-                    <h3>{title}</h3>
+                    <h3 className="text-center">{title}</h3>
                     <p>{subtitle}</p>
                     <p>{author}</p>
                     <p>{newsdate}</p>
                     <p>{content}</p>
+                </div>
+            )
+        }else{
+            return (
+                <div>
+                    <h2>error</h2>
+                    <a href="/" className="btn btn-primary">返回首页</a>
                 </div>
             )
         } 
@@ -40,11 +48,11 @@ class Detail extends React.Component{
 
 const getValue = state=>{
     return {
-        newsList:state.news.newsList
+        allNewsList:state.news.allNewsList
     }
 }
 
-const DetailConText = connect(getValue)(Detail);
+const DetailConText = connect(getValue,{fetchGetAllNewsList})(Detail);
 
 
 

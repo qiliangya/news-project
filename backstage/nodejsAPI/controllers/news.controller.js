@@ -73,6 +73,7 @@ exports.list = (req,res,next)=>{
                         }
                         News.paginate({"typeId" : {$in:ids}},{page:page,limit:rows},(err,data)=>{
                             result.rows = data.docs;
+                            result.total = data.total;
                             delete result.docs;
                             findUser();
                         })
@@ -84,10 +85,6 @@ exports.list = (req,res,next)=>{
             delete result.docs;
             findUser();
         }
-
-
-
-
         function findUser(){
             if(result.rows.length > 0){         //这里要用length来判断数组是否为空
                 User.findById(result.rows[0].user_id,function(err,project){ //得引入User

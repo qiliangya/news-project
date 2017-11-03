@@ -1,8 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import NavLink from '../../public/NavLink/index'
+import {fetchNewsCateList} from './../../../action/news';
 import {hashHistory} from 'react-router';
 class Sider extends React.Component{
+
+    componentWillMount(){
+        this.props.fetchNewsCateList();
+    }
+
     lookNews(ev){
         var _id = ev.target.getAttribute('data-inx');
         hashHistory.push({pathname:`/news/${_id}`,query:{text:ev.target.innerHTML}});
@@ -32,6 +38,6 @@ const getValue = state=>{
     }
 }
 
-const SiderConText = connect(getValue)(Sider);
+const SiderConText = connect(getValue,{fetchNewsCateList})(Sider);
 
 module.exports = SiderConText;

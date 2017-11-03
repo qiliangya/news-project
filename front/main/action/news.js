@@ -20,7 +20,27 @@ export const getNews = data=>{
     }
 }
 
+export const getAllNewsList = data=>{
+    return {
+        type:'GETALLNEWSLIST',
+        data
+    }
+}
+
 /*  函数区 */
+
+export function fetchGetAllNewsList(){
+    return dispatch=>{
+        return fetch('http://localhost:3000/news/find',{method:'POST',headers: { 'Content-Type': 'application/x-www-form-urlencoded'},cache:'reload'})
+        .then(msg=>{
+            return msg.json();
+        })
+        .then(data=>{
+            return dispatch(getAllNewsList(data));
+        })
+    }
+}
+
 
 export function fetchGetNews(id=1,page=1){
     return dispatch=>{
