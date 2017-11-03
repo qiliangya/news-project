@@ -14,7 +14,7 @@ class App extends React.Component{
                 <div className="container">
                     <div className="row row-offcanvas row-offcanvas-right">
                         <div className="col-xs-12 col-sm-9">
-                            {this.props.children}
+                            {this.props.children}                            
                         </div>
                         <Sider/>
                     </div>

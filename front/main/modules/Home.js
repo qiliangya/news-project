@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {hashHistory} from 'react-router';
 import {fetchNewsCateList,fetchNewsList} from '../action/news';
+import Sider from './public/Sider/index'
 
 import './index.scss';
 
@@ -39,7 +40,7 @@ class Home extends React.Component{
                         }
                     </div>
                 </div>
-            </div>    
+            </div>
         )
     }
 }

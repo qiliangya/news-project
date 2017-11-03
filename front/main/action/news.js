@@ -22,9 +22,9 @@ export const getNews = data=>{
 
 /*  函数区 */
 
-export function fetchGetNews(id){
+export function fetchGetNews(id=1,page=1){
     return dispatch=>{
-        return fetch(`http://localhost:3000/news/list`,{method:'POST',headers: { 'Content-Type': 'application/x-www-form-urlencoded', },cache:'reload',body:`id=${id}`})
+        return fetch(`http://localhost:3000/news/list`,{method:'POST',headers: { 'Content-Type': 'application/x-www-form-urlencoded'},cache:'reload',body:`id=${id}&page=${page}`})
         .then(msg=>{
             return msg.json();
         })

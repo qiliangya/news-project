@@ -40,11 +40,11 @@ exports.find = (req,res,next)=>{
 
 
 exports.list = (req,res,next)=>{
-    var page = (req.body.page)?req.body.page:1;
+    var page = parseInt((req.body.page)?req.body.page:1);
     //需要转成整型
+    
     var rows = parseInt((req.body.rows)?req.body.rows:6);
     var id = req.body.id || null;
-    console.log(req.body);
     var ids = [];
     var queryCondition = {};
     var title = null;
@@ -63,7 +63,7 @@ exports.list = (req,res,next)=>{
     
     News.paginate(queryCondition,{page:page,limit:rows},(err,result)=>{
         //实现动态显示条数
-        if(id !== null){
+        if(id != null && id != 'null'){
             Cate.findOne({_id:id},(err,doc)=>{
                 if(doc){
                     ids = [doc._id];
@@ -71,8 +71,9 @@ exports.list = (req,res,next)=>{
                         for(var i = 0;i<docs.length;i++){
                             ids.push(docs[i]._id);
                         }
-                        News.find({"typeId" : {$in:ids}},(err,data)=>{
-                            result.rows = data;
+                        News.paginate({"typeId" : {$in:ids}},{page:page,limit:rows},(err,data)=>{
+                            result.rows = data.docs;
+                            delete result.docs;
                             findUser();
                         })
                     })

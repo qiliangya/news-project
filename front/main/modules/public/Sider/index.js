@@ -5,7 +5,7 @@ import {hashHistory} from 'react-router';
 class Sider extends React.Component{
     lookNews(ev){
         var _id = ev.target.getAttribute('data-inx');
-        hashHistory.push(`/news/${_id}`);
+        hashHistory.push({pathname:`/news/${_id}`,query:{text:ev.target.innerHTML}});
     }
 
     render(){
