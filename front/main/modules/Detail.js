@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchGetAllNewsList} from '../action/news';
 import {hashHistory} from 'react-router';
+import './index.scss'
 
 import _ from 'lodash';
 
@@ -40,9 +41,11 @@ class Detail extends React.Component{
             return (
                 <div>
                     <h3 className="text-center">{title}</h3>
-                    <p>{subtitle}</p>
-                    <p>{author}</p>
-                    <p>{this.changeDate(new Date(newsdate))}</p>
+                    <p className="text-center"><b>{subtitle}</b></p>
+                    <p className="row">
+                        <span className="author col-lg-5 text-right">作者 : {author}</span>
+                        <span className="date col-lg-7 text-left">发布日期 : {this.changeDate(new Date(newsdate))}</span>
+                    </p>
                     <p>{content}</p>
                 </div>
             )
